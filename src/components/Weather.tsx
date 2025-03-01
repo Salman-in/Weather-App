@@ -6,11 +6,11 @@ const Weather = () => {
     const [inputCity, setInputCity] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [initialState, setInitialState] = useState<boolean>(true);
-    const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+    // const [unit, setUnit] = useState<"metric" | "imperial">("metric");
 
     const fetchWeather = async (city: string) => {
         try {
-            const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.VITE_API_KEY}&units=${unit}`;
+            const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.VITE_API_KEY}&units=metric`;
             setLoading(true);
             const res = await axios.get(URL);
             const mainData = res.data;
@@ -40,15 +40,16 @@ const Weather = () => {
     };
 
 
-    const toggleUnit = () => {
-        setUnit((prevUnit) => (prevUnit === "metric" ? "imperial" : "metric"));
-        if (data) {
-            fetchWeather(data.city);
-        }
-    };
+    // const toggleUnit = () => {
+    //     setUnit((prevUnit) => (prevUnit === "metric" ? "imperial" : "metric"));
+    //     if (data) {
+    //         fetchWeather(data.city);
+    //     }
+    // };
 
     return (
-        <div className="flex flex-col items-center bg-[#d6ccff] w-[340px] justify-self-center p-4 rounded-lg my-8 shadow-2xl py-16 md:w-96">
+        <div className="flex flex-col items-center bg-[#d6ccff] w-[340px] justify-self-center p-4 rounded-lg my-8 shadow-2xl pt-[2px] pb-8 md:w-96">
+        <img src='./public/mega-cloud.svg' alt='background' className='w-full pl-[1rem]' />
             <div className=" my-4 font-bold text-gray-200 bg-slate-900 px-4 pt-4 pb-2 rounded-3xl">
             <h1 className="text-4xl justify-self-center">Weather App</h1>
             <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p>
@@ -64,7 +65,7 @@ const Weather = () => {
                     onChange={(e) => setInputCity(e.target.value)}
                 />
                 <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={handleSearch}>Search</button>
-                <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={toggleUnit}>Switch to {unit === "metric" ? "imperial unit" : "metric unit"}</button>
+                {/* <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={toggleUnit}>Switch to {unit === "metric" ? "imperial unit" : "metric unit"}</button> */}
             </div>
             {initialState ?
                 <div></div> :
@@ -73,11 +74,9 @@ const Weather = () => {
                     <div className="font-bold text-xl text-teal-800">Weather Details <hr /></div>
                     <div>
                         {data && <h2 className="font-bold">City: {data.city}</h2>}
-                        {data && <h2>Humidity: {data.humidity}%</h2>}
-                    </div>
-                    <div>
-                        {data && <h2>Temperature: {data.temp} {unit === "metric" ? "°C" : "°F"}</h2>}
-                        {data && <h2>Wind Speed: {data.wind} {unit === "metric" ? "m/s" : "mph"}</h2>}
+                        {data && <h2>Temperature: <span className="font-bold">{data.temp} °C</span></h2>}
+                        {data && <h2>Humidity: <span className="font-bold">{data.humidity}%</span></h2>}
+                        {data && <h2>Wind Speed: <span className="font-bold">{data.wind} m/s</span></h2>}
                     </div>
                 </div>)
                 }
