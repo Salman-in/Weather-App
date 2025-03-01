@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import "./public/mega-cloud.svg";
 
 const Weather = () => {
     const [data, setData] = useState<any>(null);
@@ -53,7 +52,7 @@ const Weather = () => {
             >
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
-            <img src='./public/mega-cloud.svg' alt='background' className='w-full pl-[1rem]' />
+            <img src='/mega-cloud.svg' alt='background' className='w-full pl-[1rem]' />
             <div className={`my-4 font-bold ${darkMode ? 'text-gray-200 bg-gray-800' : 'text-gray-200 bg-slate-900'} px-8 pt-4 pb-2 rounded-3xl transition-all duration-300`}>
                 <h1 className="text-4xl justify-self-center">Weather App</h1>
                 <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p> 
