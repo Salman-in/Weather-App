@@ -48,7 +48,7 @@ const Weather = () => {
     };
 
     return (
-        <div className="flex flex-col items-center bg-[#d6ccff] w-96 justify-self-center p-4 rounded-lg my-8 shadow-lg">
+        <div className="flex flex-col items-center bg-[#d6ccff] w-[340px] justify-self-center p-4 rounded-lg my-8 shadow-2xl py-16">
             <div className=" my-4 font-bold text-gray-200 bg-slate-900 px-4 pt-4 pb-2 rounded-md">
             <h1 className="text-4xl justify-self-center">Weather App</h1>
             <p className="text-gray-400 justify-self-end pt-2 pr-2 font-mono">by Salman</p>
@@ -72,7 +72,7 @@ const Weather = () => {
                 <div className="bg-slate-100 p-4 rounded-md mt-4 w-72 flex items-center justify-center flex-col">
                     <div className="font-bold text-xl text-teal-800">Weather Details <hr /></div>
                     <div>
-                        {data && <h2>City: {data.city}</h2>}
+                        {data && <h2 className="font-bold">City: {data.city}</h2>}
                         {data && <h2>Humidity: {data.humidity}%</h2>}
                     </div>
                     <div>
