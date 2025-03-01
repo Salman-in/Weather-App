@@ -47,7 +47,7 @@ const Weather = () => {
         <div className={`flex flex-col items-center ${darkMode ? 'bg-gray-900 text-white' : 'bg-[#d6ccff] text-gray-800'} w-[340px] justify-self-center p-4 rounded-xl my-8 shadow-2xl pt-[2px] pb-8 md:w-96 transition-all duration-300`}>
             <button 
                 onClick={toggleDarkMode} 
-                className="absolute top-4 right-4 bg-purple-400 px-4 py-2 rounded text-white hover:bg-purple-800"
+                className="absolute top-4 right-4 bg-purple-400 md:bg-purple-400 px-4 py-2 rounded text-white md:hover:bg-purple-800 transition-all duration-300"
             >
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
