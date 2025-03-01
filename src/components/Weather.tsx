@@ -34,6 +34,7 @@ const Weather = () => {
     const handleSearch = () => {
         if (inputCity.trim() === "") {
             alert("Please enter a valid city name!");
+            {loading}
             return;
         }
         fetchWeather(inputCity);
@@ -54,7 +55,7 @@ const Weather = () => {
             <img src='./public/mega-cloud.svg' alt='background' className='w-full pl-[1rem]' />
             <div className={`my-4 font-bold ${darkMode ? 'text-gray-200 bg-gray-800' : 'text-gray-200 bg-slate-900'} px-8 pt-4 pb-2 rounded-3xl transition-all duration-300`}>
                 <h1 className="text-4xl justify-self-center">Weather App</h1>
-                <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p>
+                <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p> 
             </div>
             {initialState && <h2 className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Enter a city to get the weather</h2>}
             <div className="flex items-center justify-center flex-col">
