@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Skeleton from 'react-loading-skeleton';
 
 const Weather = () => {
     const [data, setData] = useState<any>(null);
@@ -64,10 +65,10 @@ const Weather = () => {
                 {data && <h2>Humidity: {data.humidity}%</h2>}
             </div>
 
-            {loading ? <h2>Loading...</h2> :
+            {loading ? <Skeleton /> :
                 (<div>
                     {data && <h2>Temperature: {data.temp} {unit === "metric" ? "°F" : "°C"}</h2>}
-                    {data && <h2>Wind: {data.wind} {unit === "metric" ? "m/s" : "mph"}</h2>}
+                    {data && <h2>Wind Speed: {data.wind} {unit === "metric" ? "m/s" : "mph"}</h2>}
                 </div>)}
             {initialState && <h2>Enter a city to get the weather</h2>}
         </div>
