@@ -4,11 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
- 
 body {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  /* font-family: 'Poppins', sans-serif; */
   background: rgb(2,0,36);
-  background: linear-gradient(180deg, rgb(8, 6, 59) 0%, rgb(162, 96, 157) 49%, rgb(233, 166, 244) 100%);;
+  background: linear-gradient(180deg, rgb(8, 6, 59) 0%, rgb(162, 96, 157) 49%, rgb(233, 166, 244) 100%);
+}
+
+.dark-mode {
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, rgb(8, 6, 59) 0%, rgb(162, 96, 157) 49%, rgb(233, 166, 244) 100%);
+  color: white;
 }
