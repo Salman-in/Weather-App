@@ -48,10 +48,10 @@ const Weather = () => {
     };
 
     return (
-        <div className="flex flex-col items-center bg-[#d6ccff] w-[340px] justify-self-center p-4 rounded-lg my-8 shadow-2xl py-16">
-            <div className=" my-4 font-bold text-gray-200 bg-slate-900 px-4 pt-4 pb-2 rounded-md">
+        <div className="flex flex-col items-center bg-[#d6ccff] w-[340px] justify-self-center p-4 rounded-lg my-8 shadow-2xl py-16 md:w-96">
+            <div className=" my-4 font-bold text-gray-200 bg-slate-900 px-4 pt-4 pb-2 rounded-3xl">
             <h1 className="text-4xl justify-self-center">Weather App</h1>
-            <p className="text-gray-400 justify-self-end pt-2 pr-2 font-mono">by Salman</p>
+            <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p>
             </div>
             {initialState && <h2 className="text-gray-600">Enter a city to get the weather</h2>}
             <div className="flex items-center justify-center flex-col">
@@ -64,7 +64,7 @@ const Weather = () => {
                     onChange={(e) => setInputCity(e.target.value)}
                 />
                 <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={handleSearch}>Search</button>
-                <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={toggleUnit}>Switch to {unit === "metric" ? "metric unit" : "imperial unit"}</button>
+                <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={toggleUnit}>Switch to {unit === "metric" ? "imperial unit" : "metric unit"}</button>
             </div>
             {initialState ?
                 <div></div> :
@@ -76,7 +76,7 @@ const Weather = () => {
                         {data && <h2>Humidity: {data.humidity}%</h2>}
                     </div>
                     <div>
-                        {data && <h2>Temperature: {data.temp} {unit === "metric" ? "°F" : "°C"}</h2>}
+                        {data && <h2>Temperature: {data.temp} {unit === "metric" ? "°C" : "°F"}</h2>}
                         {data && <h2>Wind Speed: {data.wind} {unit === "metric" ? "m/s" : "mph"}</h2>}
                     </div>
                 </div>)
