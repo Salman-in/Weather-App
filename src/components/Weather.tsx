@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "./public/mega-cloud.svg";
 
 const Weather = () => {
     const [data, setData] = useState<any>(null);
