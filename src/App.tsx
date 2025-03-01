@@ -4,8 +4,7 @@ import Weather from './components/Weather'
 function App() {
   return (
     <>
-      <div>
-        <h1>Weather App</h1>
+      <div className='flex items-center justify-center h-screen'>
         <Weather />
       </div>
     </>
