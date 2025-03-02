@@ -17,9 +17,12 @@ const Weather = () => {
             console.log(mainData);
             setData({
                 temp: Math.round(mainData.main.temp),
+                feelslike: Math.round(mainData.main.feels_like),
                 humidity: mainData.main.humidity,
                 city: mainData.name,
                 wind: mainData.wind.speed,
+                condition: mainData.weather,
+                visibility: mainData.visibility
             });
             setInitialState(false);
         } catch (error) {
@@ -34,7 +37,7 @@ const Weather = () => {
     const handleSearch = () => {
         if (inputCity.trim() === "") {
             alert("Please enter a valid city name!");
-            {loading}
+            { loading }
             return;
         }
         fetchWeather(inputCity);
@@ -46,8 +49,8 @@ const Weather = () => {
 
     return (
         <div className={`flex flex-col items-center ${darkMode ? 'bg-gray-900 text-white' : 'bg-[#d6ccff] text-gray-800'} w-[340px] justify-self-center p-4 rounded-xl my-8 shadow-2xl pt-[2px] pb-8 md:w-96 transition-all duration-300`}>
-            <button 
-                onClick={toggleDarkMode} 
+            <button
+                onClick={toggleDarkMode}
                 className="absolute top-4 right-4 bg-purple-400 md:bg-purple-400 px-4 py-2 rounded text-white md:hover:bg-purple-800 transition-all duration-300"
             >
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
@@ -55,7 +58,7 @@ const Weather = () => {
             <img src='/mega-cloud.svg' alt='background' className='w-full pl-[1rem]' />
             <div className={`my-4 font-bold ${darkMode ? 'text-gray-200 bg-gray-800' : 'text-gray-200 bg-slate-900'} px-8 pt-4 pb-2 rounded-3xl transition-all duration-300`}>
                 <h1 className="text-4xl justify-self-center">Weather App</h1>
-                <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p> 
+                <p className="text-gray-400 justify-self-end pt-2 pr-[2px]">by Salman</p>
             </div>
             {initialState && <h2 className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Enter a city to get the weather</h2>}
             <div className="flex items-center justify-center flex-col">
@@ -71,15 +74,17 @@ const Weather = () => {
             {initialState ?
                 <div></div> :
                 (
-                <div className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-slate-100 text-gray-800'} p-4 rounded-md mt-4 w-72 flex items-center justify-center flex-col transition-all duration-300`}>
-                    <div className={`font-bold text-xl ${darkMode ? 'bg-gray-700' : 'bg-slate-300'} p-2 rounded-md w-full text-center transition-all duration-100`}>Weather Details</div>
-                    <div className="flex flex-col items-center justify-center space-y-2 pt-4">
-                        {data && <h2 className="font-bold">City: {data.city}</h2>}
-                        {data && <h2>Temperature: <span className="font-bold">{data.temp} °C</span></h2>}
-                        {data && <h2>Humidity: <span className="font-bold">{data.humidity}%</span></h2>}
-                        {data && <h2>Wind Speed: <span className="font-bold">{data.wind} m/s</span></h2>}
-                    </div>
-                </div>)
+                    <div className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-slate-100 text-gray-800'} p-4 rounded-md mt-4 w-72 flex items-center justify-center flex-col transition-all duration-300`}>
+                        <div className={`font-bold text-xl ${darkMode ? 'bg-gray-700' : 'bg-slate-300'} p-2 rounded-md w-full text-center transition-all duration-100`}>Weather Details</div>
+                        <div className="flex flex-col items-center justify-center space-y-2 pt-4">
+                            {data && <h2 className="font-bold">City: {data.city}</h2>}
+                            {data && <h2>Temperature: <span className="font-bold">{data.temp} °C</span></h2>}
+                            {data && <h2>Feels Like: <span className="font-bold">{data.feelslike} °C</span></h2>}
+                            {data && <h2>Humidity: <span className="font-bold">{data.humidity}%</span></h2>}
+                            {data && <h2>Wind Speed: <span className="font-bold">{data.wind} m/s</span></h2>}
+                            {data && <h2>Weather Condition: <span className="font-bold">{data.condition[0].description.charAt(0).toUpperCase() + data.condition[0].description.slice(1)}</span></h2>}
+                            <h2>Visibility: <span className="font-bold">{data.visibility / 1000} km</span></h2>                        </div>
+                    </div>)
             }
         </div>
     );
