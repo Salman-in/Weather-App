@@ -69,7 +69,11 @@ const Weather = () => {
                     value={inputCity}
                     onChange={(e) => setInputCity(e.target.value)}
                 />
-                <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={handleSearch}>Search</button>
+                <button className="bg-purple-400 m-2 px-8 py-2 rounded text-white hover:bg-purple-800" onClick={handleSearch} 
+                onKeyDown={(e) => {
+                    if (e.key === "Enter")
+                            handleSearch();
+                }}>Search</button>
             </div>
             {initialState ?
                 <div></div> :
